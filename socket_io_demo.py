@@ -16,17 +16,17 @@ SOCKET_EVENT =  'categories.loadMoreCategories'
 def connect():
     print('connection established')
 
-@sio.on(SOCKET_EVENT)
-def loadCategories(data):
-    print('message received with ', data)
+# @sio.on(SOCKET_EVENT)
+# def loadCategories(data):
+#     print('message received with ', data)
 
 @sio.event
 def disconnect():
     print('disconnected from server')
 
 
-def callback(data, data2):
-    print(data, data2)
+def callback(error, data2):
+   print(error, data2)
 
 sio.connect(PHILU_SOCKET_URL, headers={
     # 'token': '{}'.format(JWT_TOKEN)
@@ -35,7 +35,7 @@ print('CONNECTED')
 
 
 payload = {
-            'after': 0,
+            'after': 0, # "12" -> "24" ...
             'queryParams': ''
         }
 
